@@ -4,6 +4,6 @@ import tablesReducer from "./tablesReducer";
 
 export default configureStore({
     reducer: {
-        tables: tablesReducer,
+        tablesReducer: tablesReducer,
     }
 })
