@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import initialState from "./initialState";
 
+export const fetchData = dispatch => {
+    fetch('https//localhost:3131/api/tables')
+    .then(res => res.json())
+    .then(tables => dispatch(setTables(tables)))
+}
+
+
+
 const tablesSlice = createSlice({
     name: 'tables',
-    initialState: {
-      tables: [],  
-    },
+    initialState: 
+      {fetchData},
     reducers: {
         setTables: (state, action) => {
             return {...state, tables: [...action.payload] };
