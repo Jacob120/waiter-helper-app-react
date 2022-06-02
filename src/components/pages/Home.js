@@ -5,13 +5,14 @@ import { getAllTables } from '../../redux/tablesRedux';
 const Home = () => {
 
   const tables = useSelector(getAllTables);
-  console.log(tables)
+
   return (
     <div>
       <h1 className="my-5">All tables</h1>
       {tables.map((table, index) => (
         <TableInfo 
-          key={index} 
+          key={index}
+          id={table.id} 
           number={table.id}
           status={table.status}
           />          

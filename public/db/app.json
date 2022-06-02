@@ -27,14 +27,7 @@
         "people": "2",
         "maxPeople": "4",
         "bill": "0"
-    },
-    {
-        "id": "4",
-        "status": "Busy",
-        "people": "2",
-        "maxPeople": "4",
-        "bill": "0"
     }
 ],
-"states": ["Empty", "Busy", "Cleaning"]
+"status": ["Empty", "Busy", "Cleaning"]
 }
