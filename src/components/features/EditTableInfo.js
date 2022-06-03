@@ -9,12 +9,14 @@ const EditTableInfo = () => {
 
   const dispatch = useDispatch();
   const { tableId } = useParams();
-  const tableData = useSelector(state => getTableById(state, tableId))
+  const tableData = useSelector(state => getTableById(state, tableId));
+
+
 
   let navigate = useNavigate();
 
   const handleSubmit = table => {
-    dispatch(editTable({ ...table, tableId}));
+    dispatch(editTable({ ...table, tableId }));
     navigate('/');
   };
 

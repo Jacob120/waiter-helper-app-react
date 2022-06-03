@@ -1,24 +1,31 @@
 import { Form, Row, Col, Button,  } from 'react-bootstrap';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { getAllStatuses } from '../../redux/tablesStatusRedux';
+import { updateTableRequest } from '../../redux/tablesRedux';
 
 const TableForm = ({ action, actionText, ...props}) => {
 
-  const statuses = useSelector(getAllStatuses);
+  const statuses = useSelector(getAllStatuses); 
+  const id = props.id;
+  const dispatch = useDispatch();
+
 
   const [status, setStatus] = useState(props.status || '');
   const [people, setPeople] = useState(props.people || '');
   const [maxPeople, setMaxPeople] = useState(props.maxPeople || '');
   const [bill, setBill] = useState(props.bill || '');
 
-  
+  console.log('status', status)
+
+
+  console.log(props.status)
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
   const handleSubmit = () => {
-    action({status})
+   dispatch(updateTableRequest({ id, people, maxPeople, bill, status }));
   }
 
   return (
