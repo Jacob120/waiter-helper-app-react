@@ -14,9 +14,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchData()), [dispatch] )
-  useEffect(() => dispatch(fetchStatus()), [dispatch] )
-
+  useEffect(() => dispatch(fetchData()), [dispatch] );
+  useEffect(() => dispatch(fetchStatus()), [dispatch] );
+  
   return (
   <main>
     <Container>

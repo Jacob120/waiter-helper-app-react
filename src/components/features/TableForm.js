@@ -11,6 +11,8 @@ const TableForm = ({ action, actionText, ...props}) => {
   const [status, setStatus] = useState(props.status || '');
   const [people, setPeople] = useState(props.people || '');
   const [maxPeople, setMaxPeople] = useState(props.maxPeople || '');
+  const [bill, setBill] = useState(props.bill || '');
+
   
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
@@ -39,7 +41,7 @@ const TableForm = ({ action, actionText, ...props}) => {
           </Col>
             {/* {statusError && <small className="d-block form-text text-danger mt-2">Please choose category</small>}       */}
         </Form.Group>
-        <Form.Group as={Row}>
+        <Form.Group as={Row} className="mb-3">
           <Form.Label column sm="1"><b>People: </b></Form.Label>
           <Col sm="1"  >
             <Form.Control 
@@ -47,26 +49,33 @@ const TableForm = ({ action, actionText, ...props}) => {
                 value={people} 
                 type="text"                
                 onChange={e => setPeople(e.target.value)} 
-               style={{width: '5'}}
-
               />
               {errors.title && <small className="d-block form-text text-danger mt-2">This field is required and has to be at least 3 characters long</small>}
-          </Col>
-          <Col sm="1">
-            <p>/</p>
-          </Col>
+          </Col>          
+          /
           <Col sm="1"  >
             <Form.Control 
                 {...register("maxPeople", { required: true})}
                 value={maxPeople} 
                 type="text"                
-                onChange={e => setMaxPeople(e.target.value)} 
-               style={{width: '5'}}
-
+                onChange={e => setMaxPeople(e.target.value)}
               />
               {errors.title && <small className="d-block form-text text-danger mt-2">This field is required and has to be at least 3 characters long</small>}
           </Col>
         </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column sm="1"><b>Bill: </b></Form.Label>
+          <Col sm="1">
+            <Form.Control 
+                {...register("bill", { required: true})}
+                value={bill} 
+                type="text"                
+                onChange={e => setBill(e.target.value)}                               
+              />
+            </Col>
+            {errors.title && <small className="d-block form-text text-danger mt-2">This field is required and has to be at least 3 characters long</small>}         
+        </Form.Group>
+        <Button className="mt-3" as="input" type="submit" value={actionText} />{' '}
       </Form>
     </Row>
   )
