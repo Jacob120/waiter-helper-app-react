@@ -17,8 +17,12 @@ const TableForm = ({ action, actionText, ...props}) => {
   const [maxPeople, setMaxPeople] = useState(props.maxPeople || '');
   const [bill, setBill] = useState(props.bill || '');
 
-  console.log('status', status)
-
+  if(people > maxPeople) {
+    setPeople(maxPeople);
+  };
+if(maxPeople > 10) {
+  setMaxPeople(10);
+};
 
   console.log(props.status)
 
