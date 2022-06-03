@@ -53,7 +53,7 @@ const TableForm = ({ action, actionText, ...props}) => {
           <Col sm="1"  >
             <Form.Control 
                 {...register("people", { required: true})}
-                value={people} 
+                value={status === 'Busy' ? people : 0} 
                 type="text"                
                 onChange={e => setPeople(e.target.value)} 
               />
