@@ -13,7 +13,7 @@ const TableInfo = ({number, status, id}) => {
           <p className="mb-0 pl-3"><strong>Status:</strong> {status}</p>
         </Col>
         <Col className="col-6 d-flex justify-content-end">
-          <Link to={"/edit/" + id}>
+          <Link to={"/tables/" + id}>
             <Button variant="primary"  size="sm">Show more</Button>
           </Link>
         </Col>

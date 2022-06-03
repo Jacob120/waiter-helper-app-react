@@ -23,7 +23,7 @@ const TableForm = ({ action, actionText, ...props}) => {
 
   return (
     <Row>
-      <h1 className="my-5">Table 1</h1>
+      <h1 className="my-5">Table {props.id}</h1>
       <Form onSubmit={validate(handleSubmit)}>
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm="1"><b>Status: </b></Form.Label>

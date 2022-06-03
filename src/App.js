@@ -23,7 +23,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/edit/:id' element={<TableEdit />} />
+        <Route path='/tables/:id' element={<TableEdit />} />
         <Route
               path="*"
               element={<NotFound />}
