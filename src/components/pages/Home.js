@@ -5,7 +5,7 @@ import { getAllTables } from '../../redux/tablesRedux';
 const Home = () => {
 
   const tables = useSelector(getAllTables);
-
+  
   return (
     <div>
       <h1 className="my-5">All tables</h1>

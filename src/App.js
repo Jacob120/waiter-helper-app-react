@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => dispatch(fetchData()), [dispatch] );
   useEffect(() => dispatch(fetchStatus()), [dispatch] );
-  
+
   return (
   <main>
     <Container>
