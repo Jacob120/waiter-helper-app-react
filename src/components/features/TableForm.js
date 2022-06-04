@@ -29,7 +29,7 @@ if(maxPeople > 10) {
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
   const handleSubmit = () => {
-   dispatch(updateTableRequest({ id, people, maxPeople, bill, status }));
+   action({ id, people, maxPeople, bill, status });
   }
 
   return (
