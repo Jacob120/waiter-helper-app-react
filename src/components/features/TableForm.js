@@ -15,7 +15,7 @@ const TableForm = ({ action, actionText, ...props}) => {
   const [status, setStatus] = useState(props.status || '');
   const [people, setPeople] = useState(props.people || '');
   const [maxPeople, setMaxPeople] = useState(props.maxPeople || '');
-  const [bill, setBill] = useState(props.bill || '');
+  const [bill, setBill] = useState(props.bill || 0);
 
   if(people > maxPeople) {
     setPeople(maxPeople);
@@ -58,7 +58,7 @@ if(maxPeople > 10) {
             <Form.Control 
                 {...register("people", { required: true})}
                 value={status === 'Busy' ? people : 0} 
-                type="text"                
+                type="number"                
                 onChange={e => setPeople(e.target.value)} 
               />
               {errors.title && <small className="d-block form-text text-danger mt-2">This field is required and has to be at least 3 characters long</small>}
@@ -68,7 +68,7 @@ if(maxPeople > 10) {
             <Form.Control 
                 {...register("maxPeople", { required: true})}
                 value={maxPeople} 
-                type="text"                
+                type="number"                
                 onChange={e => setMaxPeople(e.target.value)}
               />
               {errors.title && <small className="d-block form-text text-danger mt-2">This field is required and has to be at least 3 characters long</small>}
@@ -80,7 +80,7 @@ if(maxPeople > 10) {
             <Form.Control 
                 {...register("bill", { required: true})}
                 value={ status === 'Busy' ? bill : 0 }
-                type="text"                
+                type="number"                
                 onChange={e => setBill(e.target.value)}                               
               />
             </Col>

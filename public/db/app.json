@@ -4,7 +4,7 @@
       "id": "1",
       "people": "3",
       "maxPeople": "4",
-      "bill": 45,
+      "bill": "45",
       "status": "Busy"
     },
     {
