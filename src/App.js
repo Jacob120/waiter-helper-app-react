@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 import { fetchData } from './redux/tablesRedux';
 import { fetchStatus } from './redux/tablesStatusRedux';
 
-
 function App() {
 
   const dispatch = useDispatch();

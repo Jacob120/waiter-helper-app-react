@@ -11,8 +11,6 @@ const EditTableInfo = () => {
   const { tableId } = useParams();
   const tableData = useSelector(state => getTableById(state, tableId));
 
-
-
   let navigate = useNavigate();
 
   const handleSubmit = table => {
@@ -31,6 +29,7 @@ const EditTableInfo = () => {
       people={tableData.people}
       maxPeople={tableData.maxPeople}
       bill={tableData.bill}
+      tableNumber={tableData.tableNumber}
     />
   );
 };

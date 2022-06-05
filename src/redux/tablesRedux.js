@@ -1,5 +1,6 @@
 import shortid from 'shortid';
 
+
 // selectors
 export const getAllTables = ({ tables }) => tables;
 export const getTableById = ({ tables }, tableId) => tables.find(table => table.id === tableId);
@@ -9,17 +10,21 @@ const createActionName = actionName => `app/tables/${actionName}`;
 const EDIT_TABLE = createActionName('EDIT_TABLE');
 const UPDATE_TABLES = createActionName('UPDATE_TABLES'); 
 const ADD_TABLE = createActionName('ADD_TABLE');
+const REMOVE_TABLE = createActionName('REMOVE_TABLE');
 
 // action creators
 export const editTable = payload => ({ type: EDIT_TABLE, payload });
 export const updateTables = payload => ({ type: UPDATE_TABLES, payload });
 export const addTable = payload => ({ type: ADD_TABLE, payload });
+export const removeTable = payload => ({ type: REMOVE_TABLE, payload })
+
 
 export const fetchData = () => {
-    return (dispatch) => {
+  return (dispatch) => {
+ 
         fetch('http://localhost:3131/api/tables')
           .then(res => res.json())
-          .then(tables => dispatch(updateTables(tables)))
+          .then(tables => dispatch(updateTables(tables)))        
     }
 };
 
@@ -48,8 +53,23 @@ export const updateTableRequest = (updatedTable) => {
         body: JSON.stringify(newTable)
       };
 
-      fetch('http://localhost:3131/api/tables')
+      fetch('http://localhost:3131/api/tables', options)
         .then(() => dispatch(addTable(newTable)))
+        .then (() => fetchData());
+      }
+    };
+
+  export const deleteTableRequest = (tableId) => {
+    return (dispatch) => {
+      const options = {
+        method: 'DELETE', 
+        headers: {
+          'Content-Type': 'application/json'
+        },      
+      };
+
+      fetch('http://localhost:3131/api/tables/' + tableId, options)
+        .then(() => dispatch(removeTable(tableId)))    
 
     }
   };
@@ -62,7 +82,9 @@ const tablesReducer = (statePart = [], action) => {
         case UPDATE_TABLES:
             return [...action.payload];
         case ADD_TABLE:
-          return [ ...statePart, { ...action.payload, id: shortid() }]
+          return [ ...statePart, { ...action.payload, id: shortid() }];
+        case REMOVE_TABLE:
+          return statePart.filter(table => table.id !== action.payload);
         default:
             return statePart; 
     };

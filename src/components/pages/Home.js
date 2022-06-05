@@ -6,8 +6,8 @@ import { Button, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
 
-  const tables = useSelector(getAllTables);
-  
+  const tables = useSelector(getAllTables);  
+
   return (
     <div>
       <Row className="align-items-center justify-content-end">
@@ -24,7 +24,7 @@ const Home = () => {
         <TableInfo 
           key={index}
           id={table.id} 
-          number={index + 1}
+          number={table.tableNumber}
           status={table.status}
           />          
       ))}
