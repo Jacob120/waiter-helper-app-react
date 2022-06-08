@@ -10,13 +10,17 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchData } from './redux/tablesRedux';
 import { fetchStatus } from './redux/tablesStatusRedux';
-
+import { useSelector } from 'react-redux';
 function App() {
 
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(fetchData()), [dispatch] );
   useEffect(() => dispatch(fetchStatus()), [dispatch] );
+  const test = useSelector(state => state.tables)
+
+  console.log(test)
+
 
   return (
   <main>
